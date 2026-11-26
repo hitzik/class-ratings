@@ -40,6 +40,9 @@ create index ratings_teacher_idx on ratings (teacher_id, created_at desc);
 -- The app uses name-only login, so the public (anon) key may:
 --   read teachers / classes / ratings, and add new ratings.
 -- It may NOT edit or delete anything, or change teachers/classes.
+grant select         on teachers, classes to anon;
+grant select, insert on ratings           to anon;
+
 alter table teachers enable row level security;
 alter table classes  enable row level security;
 alter table ratings  enable row level security;
