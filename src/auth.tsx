@@ -19,10 +19,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const id = localStorage.getItem(KEY)
-    listTeachers().then((all) => {
-      setUser(all.find((t) => t.id === id) ?? null)
-      setReady(true)
-    })
+    listTeachers()
+      .then((all) => setUser(all.find((t) => t.id === id) ?? null))
+      .catch(() => setUser(null))
+      .finally(() => setReady(true))
   }, [])
 
   const login = (t: Teacher) => {

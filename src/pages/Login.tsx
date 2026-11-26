@@ -7,9 +7,12 @@ export default function Login() {
   const { login } = useAuth()
   const [teachers, setTeachers] = useState<Teacher[]>([])
   const [query, setQuery] = useState('')
+  const [error, setError] = useState(false)
 
   useEffect(() => {
-    listTeachers().then(setTeachers)
+    listTeachers()
+      .then(setTeachers)
+      .catch(() => setError(true))
   }, [])
 
   const filtered = teachers.filter((t) => t.name.includes(query.trim()))
@@ -33,7 +36,8 @@ export default function Login() {
               <button onClick={() => login(t)}>{t.name}</button>
             </li>
           ))}
-          {filtered.length === 0 && <li className="muted empty">לא נמצאו מורים</li>}
+          {error && <li className="muted empty">שגיאה בטעינת רשימת המורים, נסו לרענן</li>}
+          {!error && filtered.length === 0 && <li className="muted empty">לא נמצאו מורים</li>}
         </ul>
       </div>
     </div>

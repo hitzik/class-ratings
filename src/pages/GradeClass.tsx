@@ -30,7 +30,14 @@ export default function GradeClass({ classes }: { classes: SchoolClass[] }) {
   async function submit() {
     if (!user || !selected || score == null) return
     setSaving(true)
-    await addRating({ classId: selected.id, teacherId: user.id, score, comment })
+    try {
+      await addRating({ classId: selected.id, teacherId: user.id, score, comment })
+    } catch {
+      setSaving(false)
+      setToast('השמירה נכשלה, נסו שוב')
+      setTimeout(() => setToast(''), 3000)
+      return
+    }
     setSaving(false)
     setToast(`הדירוג לכיתה ${classLabel(selected)} נשמר ✓`)
     setTimeout(() => setToast(''), 2500)
