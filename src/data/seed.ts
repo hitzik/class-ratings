@@ -3,7 +3,7 @@ import type { SchoolClass, Teacher } from '../types'
 // ⚠️ SAMPLE DATA — replace with the school's real teacher & homeroom lists.
 
 export const teachers: Teacher[] = [
-  { id: 't1', name: 'אורטל כהן' },
+  { id: 't1', name: 'אורטל הרשקוביץ' },
   { id: 't2', name: 'מיכל לוי' },
   { id: 't3', name: 'דני אברהם' },
   { id: 't4', name: 'רונית מזרחי' },

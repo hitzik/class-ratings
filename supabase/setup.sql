@@ -54,13 +54,13 @@ create policy "add ratings"   on ratings  for insert to anon with check (status 
 
 -- ---------- SAMPLE data (will be replaced with the real lists) ----------
 insert into teachers (name) values
-  ('אורטל כהן'), ('מיכל לוי'), ('דני אברהם'), ('רונית מזרחי'),
+  ('אורטל הרשקוביץ'), ('מיכל לוי'), ('דני אברהם'), ('רונית מזרחי'),
   ('יוסי פרץ'), ('שירה ביטון'), ('נועה דהן'), ('אבי שושן');
 
 insert into classes (grade, number, homeroom_teacher_id, school_year)
 select c.grade, c.number, t.id, '2026-2027'
 from (values
-  ('ז׳', 1, 'אורטל כהן'),
+  ('ז׳', 1, 'אורטל הרשקוביץ'),
   ('ז׳', 2, 'מיכל לוי'),
   ('ז׳', 3, 'דני אברהם'),
   ('ח׳', 1, 'רונית מזרחי'),
